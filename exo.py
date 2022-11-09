@@ -53,7 +53,7 @@ def jeux(lettreSouhaiter):
 #exercice 1:
 #faire une fonction qui concatene 2 chaines de caractere, les separants par une virgule 
 def exoUn(chaine1, chaine2):
-    return(chaine1+", "+chaine2)
+    return(str(chaine1)+", "+str(chaine2))
 
 
 #exercice 2:
@@ -61,5 +61,26 @@ def exoUn(chaine1, chaine2):
 #avec l'ensemble des occurences d'un chiffre e.g.:
 #pour tableau = [0,1,1,1,0,1,1,0,1]
 #la fonction(tableau, 0) renvoyer "0, 4, 7" n'hesitez pas a implementer la premiere fonction
-def exoDeux(liste, valeurVoulu):
+
+def exoDeux(valeurVoulu):
     
+    liste = [0,5,4,3,4,7,9,5,4,1,1,2]
+    listeVoulu = []
+
+    for i in range(0,len(liste)):
+        if (liste[i]==valeurVoulu):
+            listeVoulu.append(str(i+1))
+
+    result = ", ".join(listeVoulu)
+    return(result)
+
+
+
+def exoFibonacci(x,limit):
+    liste = [0,x]
+    for i in range(1,limit):
+        liste.append(liste[i-1]+liste[i])
+    return(liste)
+
+
+
