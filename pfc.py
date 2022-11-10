@@ -54,7 +54,7 @@ while((scoreAI < 5)and(scoreJoueur < 5)):
         print("Joueur : Papier")
     elif (joueur ==3):
         print("Joueur : Ciseaux")
-    else:
+    else:   
         print("error")
     #afficher chois IA
     if (AI==1):
