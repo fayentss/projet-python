@@ -37,7 +37,7 @@
 
 
 #tant que scoreIA est plus petit que 5 et que scoreJoueur est plus petit que 5 alors
-    #initialiser IA puis assigner la valeur retourner par random(1,3) (retourne une valeur aletoire entre 1 et 3)
+    #initialiser IA puis assigner la valeur retourner par la fonction random(1,3) (retourne une valeur aletoire entre 1 et 3)
     #initialiser Joueur puis assigner la valeur retourner la fonction input (attention la valeur doit etre 1, 2 ou 3)
     #initialiser scoreRound puis assigner le resultat retourner par la fonction round()
 
