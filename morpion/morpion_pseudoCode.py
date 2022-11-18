@@ -6,9 +6,9 @@
 #ajouter a number la liste (7,8,9)
 
 #declarer game en tant que liste
-#ajouter a game la liste (0,0,0)
-#ajouter a game la liste (0,0,0)
-#ajouter a game la liste (0,0,0)
+#ajouter a game la liste ("-","-","-")
+#ajouter a game la liste ("-","-","-")
+#ajouter a game la liste ("-","-","-")
 
 #initialiser onoff a True
 
@@ -86,7 +86,7 @@
                     #initialiser la variable playercaseID_x et inserer la valeur x
                     #initialiser la variable playercaseID_y et inserer la valeur y
                 
-        #si game[playercaseID_x][playercaseID_y] est egal a 0 alors 
+        #si game[playercaseID_x][playercaseID_y] est egal a "-" alors 
             #game[playercaseID_x][playercaseID_y] est egal a "X"
             #decrementer spaceEnable de 1
             #break (quitter la boucle)
@@ -95,15 +95,27 @@
 
     #initialiser la variable statut au resultat de la fonction winCheck()
 
-    #si statut est egal a "win" alors 
+    #si statut est egal a "win" alors
+        #pour i allant de 0 a la valeur retourner par la fonction len(number)
+            #afficher la valeur de la jointure pour toutes les valeur de number[i] transformer en string "print("|".join(str(e)for e in number[i]))"
+        #afficher "---------------" 
         #onoff est egal a False
         #afficher "win"
+        #break
     #sinon si statut est egal a "lose" alors 
+        #pour i allant de 0 a la valeur retourner par la fonction len(number)
+            #afficher la valeur de la jointure pour toutes les valeur de number[i] transformer en string "print("|".join(str(e)for e in number[i]))"
+        #afficher "---------------" 
         #onoff est egal a False
         #afficher "lose"
+        #break
     #sinon si spaceEnable est egal  alors 
+        #pour i allant de 0 a la valeur retourner par la fonction len(number)
+            #afficher la valeur de la jointure pour toutes les valeur de number[i] transformer en string "print("|".join(str(e)for e in number[i]))"
+        #afficher "---------------" 
         #onoff est egal a False
         #afficher "draw"
+        #break
 
     #tant que spaceEnable est plus grand que 0 alors 
 
@@ -115,7 +127,7 @@
                     #initialiser la variable IAcaseID_x et inserer la valeur x
                     #initialiser la variable IAcaseID_y et inserer la valeur y
 
-        #si game[IAcaseID_x][IAcaseID_y] est egal a 0 alors
+        #si game[IAcaseID_x][IAcaseID_y] est egal a "-" alors
             #game[IAcaseID_x][IAcaseID_y] est egal a "O"
             #decrementer spaceEnable de 1
             #break (quitter la boucle)

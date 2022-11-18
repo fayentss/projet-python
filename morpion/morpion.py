@@ -6,9 +6,9 @@ number.append([4,5,6])
 number.append([7,8,9])
 
 game=[]
-game.append([0,0,0])
-game.append([0,0,0])
-game.append([0,0,0])
+game.append(["-","-","-"])
+game.append(["-","-","-"])
+game.append(["-","-","-"])
 
 onoff = True
 
@@ -83,7 +83,7 @@ while(onoff==True):
                     playercaseID_y = y
                 
 
-        if(game[playercaseID_x][playercaseID_y]==0):
+        if(game[playercaseID_x][playercaseID_y]=="-"):
             game[playercaseID_x][playercaseID_y] = "X"
             spaceEnable -= 1
             break
@@ -93,14 +93,26 @@ while(onoff==True):
     statut = winCheck()
         
     if(statut=="win"):
+        for i in range(0, len(number)):
+            print("|".join(str(e)for e in game[i]))
+        print("-----------------")
         onoff = False
         print("win")
+        break
     elif(statut=="lose"):
+        for i in range(0, len(number)):
+            print("|".join(str(e)for e in game[i]))
+        print("-----------------")
         onoff = False
         print("lose")
+        break
     elif(spaceEnable==0):
+        for i in range(0, len(number)):
+            print("|".join(str(e)for e in game[i]))
+        print("-----------------")
         onoff = False
         print("draw")
+        break
 
     while(spaceEnable > 0): 
 
@@ -113,7 +125,7 @@ while(onoff==True):
                     IAcaseID_x = x
                     IAcaseID_y = y
         
-        if(game[IAcaseID_x][IAcaseID_y]==0):
+        if(game[IAcaseID_x][IAcaseID_y]=="-"):
             game[IAcaseID_x][IAcaseID_y] = "O"
             spaceEnable -= 1
             break
