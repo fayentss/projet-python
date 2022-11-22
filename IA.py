@@ -21,6 +21,59 @@ IAcaseID_y = 0
 spaceEnable = 9
 
 def checkClosetoWin():
+    #check IA horizontal
+    for x in range(0,len(game)):
+        check = 0
+        for y in range(0,len(game[x])):
+            if(game[x][y]=="O"):
+                check += 1
+        if check > 1:
+            for y in range(0,len(game[x])):
+                if(game[x][y]=="O"):
+                    return(number[x][y])
+
+    #check IA vertical
+    for y in range(0,len(game)):
+        check = 0
+        for x in range(0,len(game[y])):
+            if(game[x][y]=="O"):
+                check += 1
+        if check > 1:
+            for y in range(0,len(game[x])):
+                if(game[x][y]=="O"):
+                    return(number[x][y])
+
+    #check IA diago
+    check = 0
+    if(game[0][0]=="O"):
+        check += 1
+    if(game[1][1]=="O"):
+        check += 1
+    if(game[2][2]=="O"):
+        check += 1
+    if check > 1:
+        if(game[0][0]=="-"):
+            return(1)
+        elif(game[1][1]=="-"):
+            return(5)
+        elif(game[2][2]=="-"):
+            return(9)
+
+    check = 0
+    if(game[2][0]=="O"):
+        check += 1
+    if(game[1][1]=="O"):
+        check += 1
+    if(game[0][2]=="O"):
+        check += 1
+    if check > 1:
+        if(game[2][0]=="-"):
+            return(7)
+        elif(game[1][1]=="-"):
+            return(5)
+        elif(game[0][2]=="-"):
+            return(3)
+            
     #check Player horizontal
     for x in range(0,len(game)):
         check = 0
@@ -43,27 +96,36 @@ def checkClosetoWin():
                 if(game[x][y]=="X"):
                     return(number[x][y])
 
-    #check IA horizontal
-    for x in range(0,len(game)):
-        check = 0
-        for y in range(0,len(game[x])):
-            if(game[x][y]=="O"):
-                check += 1
-        if check > 1:
-            for y in range(0,len(game[x])):
-                if(game[x][y]=="O"):
-                    return(number[x][y])
+    #check Player diago
+    check = 0
+    if(game[0][0]=="X"):
+        check += 1
+    if(game[1][1]=="X"):
+        check += 1
+    if(game[2][2]=="X"):
+        check += 1
+    if check > 1:
+        if(game[0][0]=="-"):
+            return(1)
+        elif(game[1][1]=="-"):
+            return(5)
+        elif(game[2][2]=="-"):
+            return(9)
 
-    #check IA vertical
-    for y in range(0,len(game)):
-        check = 0
-        for x in range(0,len(game[y])):
-            if(game[x][y]=="O"):
-                check += 1
-        if check > 1:
-            for y in range(0,len(game[x])):
-                if(game[x][y]=="O"):
-                    return(number[x][y])
+    check = 0
+    if(game[2][0]=="X"):
+        check += 1
+    if(game[1][1]=="X"):
+        check += 1
+    if(game[0][2]=="X"):
+        check += 1
+    if check > 1:
+        if(game[2][0]=="-"):
+            return(7)
+        elif(game[1][1]=="-"):
+            return(5)
+        elif(game[0][2]=="-"):
+            return(3)
     
     return(False)
 
