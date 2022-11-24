@@ -28,24 +28,24 @@ def playerTurn():
     global playercaseID_x
     global playercaseID_y
     playerChoice = int(input("chose a number : "))
-
+    
     if(playerChoice not in [1,2,3,4,5,6,7,8,9]):
-        print("erreur")
+        print("you need to choose a number between 1 and 9")
         playerTurn()
 
-    for x in range(0,len(number)):
-        for y in range(0,len(number[x])):
-            if(playerChoice == number[x][y]):
-                playercaseID_x = x
-                playercaseID_y = y
-            
-
-    if(game[playercaseID_x][playercaseID_y]=="-"):
-        game[playercaseID_x][playercaseID_y] = "X"
-        spaceEnable -= 1
     else:
-        print("this place is not valide")
-        playerTurn()
+        for x in range(0,len(number)):
+            for y in range(0,len(number[x])):
+                if(playerChoice == number[x][y]):
+                    playercaseID_x = x
+                    playercaseID_y = y
+                
+        if(game[playercaseID_x][playercaseID_y]=="-"):
+            game[playercaseID_x][playercaseID_y] = "X"
+            spaceEnable -= 1
+        else:
+            print("this place is not valide")
+            playerTurn()
 
 def setIAchoice(IA_choice):
     global spaceEnable
@@ -65,43 +65,27 @@ def setIAchoice(IA_choice):
 
 
 def checkClosetoWin():
-    #check IA horizontal
+    #check IA
     for x in range(0,len(game)):
         checkIA = 0
-        checkJoueur = 0
         for y in range(0,len(game[x])):
             if(game[x][y]=="O"):
                 checkIA += 1
-            if(game[x][y]=="X"):
-                checkJoueur += 1
         if checkIA > 1:
             for y in range(0,len(game[x])):
                 if(game[x][y]=="-"):
                     return(number[x][y])
-        if checkJoueur > 1:
-            for y in range(0,len(game[x])):
-                if(game[x][y]=="-"):
-                    return(number[x][y])
 
-    #check IA vertical
     for y in range(0,len(game)):
         checkIA = 0
-        checkJoueur = 0
         for x in range(0,len(game[x])):
             if(game[x][y]=="O"):
                 checkIA += 1
-            if(game[x][y]=="X"):
-                checkJoueur += 1
         if checkIA > 1:
             for x in range(0,len(game[x])):
                 if(game[x][y]=="-"):
                     return(number[x][y])
-        if checkJoueur > 1:
-            for x in range(0,len(game[x])):
-                if(game[x][y]=="-"):
-                    return(number[x][y])
 
-    #check IA diago
     check = 0
     if(game[0][0]=="O"):
         check += 1
@@ -130,9 +114,28 @@ def checkClosetoWin():
             return(5)
         elif(game[0][2]=="-"):
             return(3)
-            
-    
-    #check joueur diago
+
+    #check joueur
+    for x in range(0,len(game)):
+        checkJoueur = 0
+        for y in range(0,len(game[x])):
+            if(game[x][y]=="X"):
+                checkJoueur += 1
+        if checkJoueur > 1:
+            for y in range(0,len(game[x])):
+                if(game[x][y]=="-"):
+                    return(number[x][y])
+
+    for y in range(0,len(game)):
+        checkJoueur = 0
+        for x in range(0,len(game[x])):
+            if(game[x][y]=="X"):
+                checkJoueur += 1
+        if checkJoueur > 1:
+            for x in range(0,len(game[x])):
+                if(game[x][y]=="-"):
+                    return(number[x][y])
+
     check = 0
     if(game[0][0]=="X"):
         check += 1
@@ -237,59 +240,14 @@ def IAchoice():
                                 verif = setIAchoice(random.choice([1,3,7,9]))
                                 while verif == False:
                                     verif = setIAchoice(random.choice([1,3,7,9]))
-    elif (spaceEnable == 5)or(spaceEnable == 4):
+    elif (spaceEnable == 5)or(spaceEnable == 4)or(spaceEnable == 3)or(spaceEnable == 2):
         verif = checkClosetoWin()
         if verif!=False:
             verif = setIAchoice(verif)
-        elif verif == False:
-            for x in range(0,len(game)):
-                for y in range(0,len(game[x])):
-                    if game[x][y]=="O":
-                        if(x==0)and(y==0):
-                            verif = setIAchoice(random.choice([2,4]))
-                            while verif == False:
-                                verif = setIAchoice(random.choice([2,4]))
-                        elif(x==2)and(y==0):
-                            verif = setIAchoice(random.choice([4,8]))
-                            while verif == False:
-                                verif = setIAchoice(random.choice([4,8]))
-                        elif(x==0)and(y==2):
-                            verif = setIAchoice(random.choice([2,6]))
-                            while verif == False:
-                                verif = setIAchoice(random.choice([2,6]))
-                        elif(x==2)and(y==2):
-                            verif = setIAchoice(random.choice([6,8]))
-                            while verif == False:
-                                verif = setIAchoice(random.choice([6,8]))
-
-    elif(spaceEnable == 3)or(spaceEnable == 2):
-        verif = checkClosetoWin()
-        if verif!=False:
-            verif = setIAchoice(verif)
-        elif verif == False:
-            for x in range(0,len(game)):
-                for y in range(0,len(game[x])):
-                    if game[x][y]=="O":
-                        if(x==0)and(y==0):
-                            verif = setIAchoice(random.choice([2,4]))
-                            while verif == False:
-                                verif = setIAchoice(random.choice([2,4]))
-                        elif(x==2)and(y==0):
-                            verif = setIAchoice(random.choice([4,8]))
-                            while verif == False:
-                                verif = setIAchoice(random.choice([4,8]))
-                        elif(x==0)and(y==2):
-                            verif = setIAchoice(random.choice([2,6]))
-                            while verif == False:
-                                verif = setIAchoice(random.choice([2,6]))
-                        elif(x==2)and(y==2):
-                            verif = setIAchoice(random.choice([6,8]))
-                            while verif == False:
-                                verif = setIAchoice(random.choice([6,8]))
-                        else:
-                            verif = setIAchoice(random.choice([1,2,3,4,5,6,7,8,9]))
-                            while verif == False:
-                                verif = setIAchoice(random.choice([1,2,3,4,5,6,7,8,9]))
+        else:
+            verif = setIAchoice(random.choice([1,2,3,4,5,6,7,8,9]))
+            while verif == False:
+                verif = setIAchoice(random.choice([1,2,3,4,5,6,7,8,9]))
 
     elif spaceEnable == 1:
         for x in range(0,len(game)):
@@ -323,7 +281,7 @@ def winCheck():
                     if((game[x + 1][y]=="O")and(game[x - 1][y]=="O")):
                         return("lose")
 
-                if(y==0):
+                elif(y==0):
                     if((game[x][y + 1]=="O")and(game[x][y + 2]=="O")):
                         return("lose")
                 elif(y==1):
@@ -349,7 +307,6 @@ def relancer():
     replay = input("Veux tu rejouer ( oui ou non ) : ")
     if (replay=="non"):
         onoff = False
-        print("test")
     elif(replay=="oui"):
         print("la partie se relance")
         first = random.randint(1,2)
